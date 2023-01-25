@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Filmoteka</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon-popcorn.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="img/favicon/favicon-popcorn.png"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./sass/index.scss" />
+
+
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
+  </head>
+  <body>
+    <canvas></canvas>
+
+    <!-- Header -->
+    <include src="./partials/header-home-page.html"></include>
+    <!-- Main part -->
+    <main>
+      <include src="./partials/card-section.html"></include>
+    </main>
+
+    <!-- Footer -->
+    <include src="./partials/footer-all-page.html"></include>
+
+    <!-- Modal window  -->
+    <include src="./partials/modal-win-our-team.html"></include>
+    <include src="./partials/modal-film.html"></include>
+    
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+    <!-- Preloader  -->
+    <include src="./partials/preloader.html"></include>
+    
+    <!-- Scripts -->
+    <script type="module" src="./index.js"></script>
+    <script src="https://unpkg.com/webgl-fluid@0.2"></script>
+    <script>
+      window['webgl-fluid'](document.querySelector('canvas'), {
+        TRANSPARENT: true,
+      });
+    </script>
+  </body>
+</html>
