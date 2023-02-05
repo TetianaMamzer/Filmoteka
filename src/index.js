@@ -13,3 +13,5 @@ import './js/search-films';
 
 import './js/open-md-win-our-team';
 import './js/slider';
+import './js/popular-gallary';
+import './js/swiper-slide';

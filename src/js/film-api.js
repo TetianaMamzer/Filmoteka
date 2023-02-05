@@ -20,6 +20,7 @@ export {
   fetchGenresAPI,
   fetchMovieInfoAPI,
   fetchFilmsSearch,
+  trendingFilms
 };
 
 // FETCH FOR MOVIE OF THE DAY
@@ -52,6 +53,23 @@ const options = {
 
 const pagination = new Pagination(refs.pagination, options);
 const page = pagination.getCurrentPage();
+
+async function trendingFilms() {
+  return await fetch(`${URL}/trending/movie/week?api_key=${KEY}&page=1`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not OK');
+    }
+    return response.json();
+  }).then(data => {
+    return data.results;
+  }).catch(error => {
+    console.error(
+      'There has been a problem with your fetch operation:',
+      error
+    );
+  });
+}
 
 async function fetchFilmsAPI(page) {
   return await fetch(`${URL}/trending/movie/day?api_key=${KEY}&page=${page}`)

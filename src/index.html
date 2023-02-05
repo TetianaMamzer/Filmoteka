@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="stylesheet" href="libs/swiper/swiper-bundle.min.css" />
     <title>Filmoteka</title>
 
     <!-- Favicon -->
@@ -28,12 +28,12 @@
 
   </head>
   <body>
-    <canvas></canvas>
 
     <!-- Header -->
     <include src="./partials/header-home-page.html"></include>
     <!-- Main part -->
     <main>
+      <include src="./partials/popular-gallery.html"></include>
       <include src="./partials/card-section.html"></include>
     </main>
 
@@ -56,10 +56,6 @@
     <!-- Scripts -->
     <script type="module" src="./index.js"></script>
     <script src="https://unpkg.com/webgl-fluid@0.2"></script>
-    <script>
-      window['webgl-fluid'](document.querySelector('canvas'), {
-        TRANSPARENT: true,
-      });
-    </script>
+    <script src="./libs/swiper/swiper-bundle.min.js"></script>
   </body>
 </html>

@@ -18,7 +18,6 @@ const refs = {
   openModalFilm: document.querySelector('.card-list'),
 
 }
-console.log(refs)
 refs.openModalFilm.addEventListener('click', openFilmModalHandler);
 
 const scrollController = {
@@ -37,9 +36,9 @@ function openFilmModalHandler(e) {
   if (e.target !== e.currentTarget) {
   e.preventDefault();
       const filmModalId = e.target
+
       .closest('.card-link')
       .getAttribute('data-id');
-      console.log(filmModalId) 
   
       fetchMovieInfoAPI(filmModalId).then(data => {
         refs.filmModalList.classList.remove('is-hidden');

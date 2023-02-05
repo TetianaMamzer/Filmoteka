@@ -3,11 +3,10 @@
   margin-right: auto;
 
   background-image: linear-gradient(
-      to right,
-      var(--hero-background),
-      var(--hero-background)
-    ),
-    url(../img/header_home/home-background0.jpg);
+        to right,
+        var(--hero-background),
+        var(--hero-background)
+      ), url(../img/header_home/home-background0.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -20,8 +19,7 @@
         to right,
         var(--hero-background),
         var(--hero-background)
-      ),
-      url(../img/header_home/home-background0@2x.jpg);
+      ), url(../img/header_home/home-background0@2x.jpg);
   }
 }
 
@@ -31,8 +29,7 @@
         to right,
         var(--hero-background),
         var(--hero-background)
-      ),
-      url(../img/header_home/home-background2.jpg);
+      ), url(../img/header_home/home-background2.jpg);
   }
 }
 @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
@@ -43,8 +40,7 @@
         to right,
         var(--hero-background),
         var(--hero-background)
-      ),
-      url(../img/header_home/home-background2@2x.jpg);
+      ), url(../img/header_home/home-background2@2x.jpg);
   }
 }
 @media screen and (min-width: 1200px) {
@@ -53,8 +49,7 @@
         to right,
         var(--hero-background),
         var(--hero-background)
-      ),
-      url(../img/header_home/home-background1@2x.jpg);
+      ), url(../img/header_home/home-background1@2x.jpg);
   }
 }
 @media screen and (min-width: 1200px) and (min-device-pixel-ratio: 2),
@@ -65,8 +60,7 @@
         to right,
         var(--hero-background),
         var(--hero-background)
-      ),
-      url(../img/header_home/home-background1@2x.jpg);
+      ), url(../img/header_home/home-background1@2x.jpg);
   }
 }
 .page::after {
