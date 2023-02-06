@@ -12,4 +12,5 @@ import './js/slider';
 
 import './js/swiper-slide';
 
+import './js/open-modal-top-list';
 

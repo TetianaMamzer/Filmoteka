@@ -1,11 +1,5 @@
-
 import {
-    fetchFilmsAPI,
-    fetchMoreFilmsAPI,
-    fetchMoreGenresAPI,
-    fetchGenresAPI,
     fetchMovieInfoAPI,
-    fetchFilmsSearch,
   } from '../film-api';
 
 import { isMovieInWatched, isMovieInQueue } from './from-local-storage-info';
