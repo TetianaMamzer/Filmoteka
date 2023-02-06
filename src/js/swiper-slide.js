@@ -1,7 +1,8 @@
-refs = {
+const refs = {
   gallery: document.querySelector('.swiper-slider'),
-  shadow: document.querySelector('.swiper-shadow')
+  shadow: document.querySelector('.swiper-shadow'),
  }
+ 
 
 const URL = 'https://api.themoviedb.org/3';
 const KEY = 'cf961b1b89f4c4a28558be2b04fdd59a';
