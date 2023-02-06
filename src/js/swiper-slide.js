@@ -1,4 +1,9 @@
+const refs = {
+  swiper: document.querySelector('.swiper-wrapper'),
+  shadow: document.querySelector('.swiper-shadow'),
 
+
+}
 const URL = 'https://api.themoviedb.org/3';
 const KEY = 'cf961b1b89f4c4a28558be2b04fdd59a';
 const noPosterImg ='https://freedesignfile.com/upload/2018/11/Characters-in-film-design-elements-background-vector-graphic-715.jpg';
@@ -22,8 +27,8 @@ async function trendingFilms() {
 }
 
 trendingFilms().then(data => {
-  document.querySelector('.swiper-wrapper').insertAdjacentHTML('beforeend', createPopularList(data))
-  document.querySelector('.swiper-shadow').insertAdjacentHTML('beforeend', createPopularList(data))
+  refs.swiper.insertAdjacentHTML('beforeend', createPopularList(data))
+  refs.shadow.insertAdjacentHTML('beforeend', createPopularList(data))
 })
 function createPopularList(data) {
  if (data.length === 0) {
