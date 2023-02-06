@@ -36,7 +36,7 @@ const scrollController = {
 
 function openModalList(e) {
   if (e.target !== e.currentTarget) {
-    console.log(e.target.getAttribute('data-id'))
+
   e.preventDefault();
   const listId = e.target.getAttribute('data-id');
 

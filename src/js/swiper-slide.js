@@ -1,6 +1,14 @@
+refs = {
+  gallery: document.querySelector('.swiper-slider'),
+  shadow: document.querySelector('.swiper-shadow')
+ }
+
+const URL = 'https://api.themoviedb.org/3';
+const KEY = 'cf961b1b89f4c4a28558be2b04fdd59a';
+const noPosterImg = 'https://freedesignfile.com/upload/2018/11/Characters-in-film-design-elements-background-vector-graphic-715.jpg';
+const basicImgURL = 'https://image.tmdb.org/t/p/w500';
+
 async function trendingFilms() {
-  const URL = 'https://api.themoviedb.org/3';
-  const KEY = 'cf961b1b89f4c4a28558be2b04fdd59a';
   return await fetch(`${URL}/trending/movie/week?api_key=${KEY}&page=1`)
     .then(response => {
       if (!response.ok) {
@@ -20,17 +28,51 @@ async function trendingFilms() {
 }
 
 trendingFilms().then(data => {
-  document
-    .querySelector('.swiper-wrapper')
-    .insertAdjacentHTML('beforeend', createPopularList(data));
-  document
-    .querySelector('.swiper-shadow')
-    .insertAdjacentHTML('beforeend', createPopularList(data));
+  refs.gallery.insertAdjacentHTML('beforeend', createPopularList(data));
+  refs.shadow.insertAdjacentHTML('beforeend', createPopularList(data));
+
+  const sliderMain = new Swiper('.slider_main', {
+    freeMode: true,
+    centeredSlides: true,
+    mousewheel: true,
+    parallax: true,
+    breakpoints: {
+      0: {
+        slidesPerView: 2.5,
+        spaceBetween: 20
+      },
+      680: {
+        slidesPerView: 3.5,
+        spaceBetween: 60
+      }
+    }
+  
+  })
+  
+  const sliderBg = new Swiper('.slider_bg', {
+    centeredSlides: true,
+    parallax: true,
+    spaceBetween: 60,
+    slidesPerView: 3.5
+  
+  })
+  
+  sliderMain.controller.control = sliderBg
+  
+  // document.querySelectorAll('.slider__item').forEach(item => {
+  //   item.addEventListener('click', e => {
+  //     item.classList.toggle('opened')
+  //   })
+  // })
+  
+  let desc = document.querySelector('.description')
+  sliderMain.on('slideChange', e => {
+    sliderMain.activeIndex > 0 ? desc.classList.add('hidden') : desc.classList.remove('hidden')
+  })
 });
+
 function createPopularList(data) {
-  const noPosterImg =
-    'https://freedesignfile.com/upload/2018/11/Characters-in-film-design-elements-background-vector-graphic-715.jpg';
-  const basicImgURL = 'https://image.tmdb.org/t/p/w500';
+
   if (data.length === 0) {
     return;
   }

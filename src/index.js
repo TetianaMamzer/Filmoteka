@@ -12,6 +12,7 @@ import './js/film-modal-render';
 import './js/search-films';
 
 import './js/open-md-win-our-team';
+
 import './js/slider';
-import './js/popular-gallary';
+
 
