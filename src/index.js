@@ -15,4 +15,6 @@ import './js/open-md-win-our-team';
 
 import './js/slider';
 
+import './js/swiper-slide';
+
 
