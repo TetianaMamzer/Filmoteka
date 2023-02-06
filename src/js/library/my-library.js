@@ -32,7 +32,6 @@ if (
 function renderLibrary(movies) {
     for (let i = 0; i < movies.length; i += 1) {
         fetchMovieInfoAPI(movies[i]).then(data => {
-           
             library.insertAdjacentHTML('beforeend', createLibraryMovieItem(data));
         })
     }
