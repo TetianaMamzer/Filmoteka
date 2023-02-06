@@ -16,9 +16,11 @@ import {
 const refs = {
   filmModalList: document.querySelector('.backdrop'),
   openModalFilm: document.querySelector('.card-list'),
+  modalCardList: document.querySelector('.wrapper-modal')
 
 }
 refs.openModalFilm.addEventListener('click', openFilmModalHandler);
+refs.modalCardList.addEventListener('click', openModalList);
 
 const scrollController = {
     disabledScroll(){
@@ -32,14 +34,85 @@ const scrollController = {
 
 }
 
+function openModalList(e) {
+  if (e.target !== e.currentTarget) {
+    console.log(e.target.getAttribute('data-id'))
+  e.preventDefault();
+  const listId = e.target.getAttribute('data-id');
+
+  fetchMovieInfoAPI(listId).then(data => {
+    refs.filmModalList.classList.remove('is-hidden');
+    refs.filmModalList.innerHTML = createModalMarkupMovie(data);
+    const buttonCloseModal = document.querySelector('.film-modal-close-button');
+    buttonCloseModal.addEventListener('click', closeModal);
+    refs.filmModalList.addEventListener('click', closeModalBackdrop);
+    
+    scrollController.disabledScroll();
+    
+    const addToWatchedBtn = document.querySelector('.add-to-watched-btn');
+let watchedMovies = JSON.parse(localStorage.getItem('Watched movies')) || [];
+const isWatched = watchedMovies.includes(data.id);
+if (isWatched) {
+addToWatchedBtn.textContent = 'Remove from watched';
+} else {
+addToWatchedBtn.textContent = 'Add to watched';
+}
+addToWatchedBtn.addEventListener('click', onToWatchedBtnClick);
+
+function onToWatchedBtnClick(event) {
+let watchedMovies = JSON.parse(localStorage.getItem('Watched movies')) || [];
+const isWatched = watchedMovies.includes(data.id);
+if (!isWatched) {
+watchedMovies.push(data.id);
+event.target.textContent = 'Remove from watched';
+
+} else {
+const movieIndex = watchedMovies.indexOf(data.id);
+watchedMovies.splice(movieIndex, 1);
+event.target.textContent = 'Add to watched';
+
+}
+localStorage.setItem('Watched movies', JSON.stringify(watchedMovies));
+    }
+    
+    const addToQueueBtn = document.querySelector('.add-to-queue-btn');
+let queueMovies = JSON.parse(localStorage.getItem('Queue movies')) || [];
+const isQueue = queueMovies.includes(data.id);
+if (isQueue) {
+addToQueueBtn.textContent = 'Remove from queue';
+} else {
+addToQueueBtn.textContent = 'Add to queue';
+}
+addToQueueBtn.addEventListener('click', onToQueueBtnClick);
+
+function onToQueueBtnClick(event) {
+let queueMovies = JSON.parse(localStorage.getItem('Queue movies')) || [];
+const isQueue = queueMovies.includes(data.id);
+if (!isQueue) {
+queueMovies.push(data.id);
+event.target.textContent = 'Remove from queue';
+
+} else {
+const movieIndex = queueMovies.indexOf(data.id);
+queueMovies.splice(movieIndex, 1);
+event.target.textContent = 'Add to queue';
+
+}
+localStorage.setItem('Queue movies', JSON.stringify(queueMovies));
+}
+
+
+  })
+
+}
+}
 function openFilmModalHandler(e) {
   if (e.target !== e.currentTarget) {
   e.preventDefault();
       const filmModalId = e.target
-
       .closest('.card-link')
       .getAttribute('data-id');
-  
+
       fetchMovieInfoAPI(filmModalId).then(data => {
         refs.filmModalList.classList.remove('is-hidden');
         refs.filmModalList.innerHTML = createModalMarkupMovie(data);
