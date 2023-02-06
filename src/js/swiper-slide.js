@@ -1,9 +1,3 @@
-// import {
-//   trendingFilms
-// } from './film-api';
-
-
-
 const refs = {
   swiper: document.querySelector('.swiper-wrapper'),
   shadow: document.querySelector('.swiper-shadow'),
