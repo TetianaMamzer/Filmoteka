@@ -1,32 +1,13 @@
+import { trendingFilms } from './film-api';
+
 const refs = {
   gallery: document.querySelector('.swiper-slider'),
   shadow: document.querySelector('.swiper-shadow'),
- }
- 
+};
 
-const URL = 'https://api.themoviedb.org/3';
-const KEY = 'cf961b1b89f4c4a28558be2b04fdd59a';
-const noPosterImg = 'https://freedesignfile.com/upload/2018/11/Characters-in-film-design-elements-background-vector-graphic-715.jpg';
+const noPosterImg =
+  'https://freedesignfile.com/upload/2018/11/Characters-in-film-design-elements-background-vector-graphic-715.jpg';
 const basicImgURL = 'https://image.tmdb.org/t/p/w500';
-
-async function trendingFilms() {
-  return await fetch(`${URL}/trending/movie/week?api_key=${KEY}&page=1`)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not OK');
-      }
-      return response.json();
-    })
-    .then(data => {
-      return data.results;
-    })
-    .catch(error => {
-      console.error(
-        'There has been a problem with your fetch operation:',
-        error
-      );
-    });
-}
 
 trendingFilms().then(data => {
   refs.gallery.insertAdjacentHTML('beforeend', createPopularList(data));
@@ -40,40 +21,39 @@ trendingFilms().then(data => {
     breakpoints: {
       0: {
         slidesPerView: 2.5,
-        spaceBetween: 20
+        spaceBetween: 20,
       },
       680: {
         slidesPerView: 3.5,
-        spaceBetween: 60
-      }
-    }
-  
-  })
-  
+        spaceBetween: 60,
+      },
+    },
+  });
+
   const sliderBg = new Swiper('.slider_bg', {
     centeredSlides: true,
     parallax: true,
     spaceBetween: 60,
-    slidesPerView: 3.5
-  
-  })
-  
-  sliderMain.controller.control = sliderBg
-  
+    slidesPerView: 3.5,
+  });
+
+  sliderMain.controller.control = sliderBg;
+
   // document.querySelectorAll('.slider__item').forEach(item => {
   //   item.addEventListener('click', e => {
   //     item.classList.toggle('opened')
   //   })
   // })
-  
-  let desc = document.querySelector('.description')
+
+  let desc = document.querySelector('.description');
   sliderMain.on('slideChange', e => {
-    sliderMain.activeIndex > 0 ? desc.classList.add('hidden') : desc.classList.remove('hidden')
-  })
+    sliderMain.activeIndex > 0
+      ? desc.classList.add('hidden')
+      : desc.classList.remove('hidden');
+  });
 });
 
 function createPopularList(data) {
-
   if (data.length === 0) {
     return;
   }
@@ -86,7 +66,7 @@ function createPopularList(data) {
         return `${basicImgURL}${poster_path}`;
       }
       return `<div class="swiper-slide slider__item card-link">
-    <div class="slider__img" data-swiper-parallax="20%" style="background-image: url(${generatePosterImg(
+    <div class="slider__img" data-swiper-parallax="30%" style="background-image: url(${generatePosterImg(
       poster_path
     )});" data-id=${id}></div>
     </div>`;
