@@ -183,7 +183,6 @@ function onToQueueBtnClick(event) {
 
 function createModalMarkupMovie(data) {
 
-  // console.log(data);
   const {
     id,
     title,
@@ -261,7 +260,7 @@ function createModalMarkupMovie(data) {
     };
 
   function closeModalBackdrop(e) {
-    console.log(e.target.classList)
+
       if (e.target.classList.contains('backdrop')) {
         closeModal();
 

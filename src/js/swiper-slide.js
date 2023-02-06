@@ -66,7 +66,7 @@ function createPopularList(data) {
         return `${basicImgURL}${poster_path}`;
       }
       return `<div class="swiper-slide slider__item card-link">
-    <div class="slider__img" data-swiper-parallax="30%" style="background-image: url(${generatePosterImg(
+    <div class="slider__img" data-swiper-parallax="20%" style="background-image: url(${generatePosterImg(
       poster_path
     )});" data-id=${id}></div>
     </div>`;

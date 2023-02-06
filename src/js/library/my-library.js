@@ -20,7 +20,6 @@ const message = document.querySelector('.message');
 let watchedMovies = isMovieInWatched();
 let queueMovies = isMovieInQueue();
 
-console.log(watchedMovies)
 
 if (
     (watchedMovies == null || watchedMovies.length === 0) &&
@@ -37,9 +36,7 @@ if (
 }
 
 function renderLibrary(movies) {
-    console.log(movies)
     for (let i = 0; i < movies.length; i += 1) {
-    console.log(movies[i])
         fetchMovieInfoAPI(movies[i]).then(data => {
            
             library.insertAdjacentHTML('beforeend', createLibraryMovieItem(data));
@@ -87,7 +84,6 @@ function clearLibrary() {
 }
 
 function createLibraryMovieItem(data) {
-    console.log(data)
   if ((watchedMovies == null || watchedMovies.length === 0) &&
   (queueMovies == null || queueMovies.length === 0)) {
     return;
